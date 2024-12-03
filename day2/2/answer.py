@@ -97,4 +97,4 @@ def process_input_file(filename):
     print(f"Total Safe: {safe}")
 
 # solve the puzzle
-process_input_file('input.txt')
+process_input_file('input.txt') # Should print 285

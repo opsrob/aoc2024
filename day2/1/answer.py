@@ -44,10 +44,10 @@ def is_valid_row(row):
     # Check if the row is empty or has only one number
     if len(row) <= 1:
         return True
-    
+
     # Determine if the row should be increasing or decreasing
     is_increasing = row[0] < row[1]
-    
+
     # Check each pair of adjacent numbers
     for i in range(len(row) - 1):
         # Check if the sequence follows the initial trend (increasing or decreasing)
@@ -55,7 +55,7 @@ def is_valid_row(row):
             return False
         if not is_increasing and row[i] <= row[i + 1]:
             return False
-        
+
         # Check the difference between adjacent numbers
         diff = abs(row[i] - row[i + 1])
         if diff < 1 or diff > 3:
@@ -74,7 +74,7 @@ def process_input_file(filename):
             result = is_valid_row(row)
             if result == True:
                 safe += 1
-            print(f"Total Safe: {safe}")
+    print(f"Total Safe: {safe}")
 
 # solve the puzzle
-process_input_file('input.txt')
+process_input_file('input.txt') # Should print 213
