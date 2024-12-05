@@ -65,19 +65,19 @@ def parse_and_calculate_mul(filename):
             for x, y in matches:
                 result = int(x) * int(y)
                 total += result
-                print(f"Found: mul({x},{y}) = {result}")
-                print(f"Total: {total}")
+                print(f'Found: mul({x},{y}) = {result}')
+                print(f'Total: {total}')
 
     except FileNotFoundError:
-        print(f"Error: File {filename} not found.")
+        print(f'Error: File {filename} not found.')
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f'An error occurred: {e}')
 
     return total
 
 def main():
     result = parse_and_calculate_mul('input.txt')
-    print(f"\nTotal sum of multiplications: {result}") # should be 173419328
+    print(f'\nTotal sum of multiplications: {result}') # should be 173419328
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

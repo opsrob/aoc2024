@@ -94,7 +94,7 @@ def process_input_file(filename):
             result = is_valid_row(row)
             if result == True:
                 safe += 1
-    print(f"Total Safe: {safe}")
+    print(f'Total Safe: {safe}')
 
 # solve the puzzle
 process_input_file('input.txt') # Should print 285

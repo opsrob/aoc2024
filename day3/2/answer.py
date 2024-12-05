@@ -40,14 +40,14 @@ def parse_and_calculate_mul(filename):
     pattern_mul = r'mul\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)'
     pattern_do = r'do\(\)'
     pattern_dont = r'don\'t\(\)'
-    
+
     total = 0
     mul_enabled = True
-    
+
     try:
         with open(filename, 'r', encoding='us-ascii') as file:
             content = file.read()
-            
+
             # Process instructions in order
             for match in re.finditer(f"{pattern_mul}|{pattern_do}|{pattern_dont}", content):
                 if match.group().startswith('do()'):
@@ -59,17 +59,17 @@ def parse_and_calculate_mul(filename):
                     result = int(x) * int(y)
                     total += result
                     print(f"Found: mul({x},{y}) = {result}")
-    
+
     except FileNotFoundError:
-        print(f"Error: File {filename} not found.")
+        print(f'Error: File {filename} not found.')
     except Exception as e:
-        print(f"An error occurred: {e}")
-    
+        print(f'An error occurred: {e}')
+
     return total
 
 def main():
     result = parse_and_calculate_mul('input.txt')
-    print(f"\nTotal sum of multiplications: {result}") # result should be 90669332
+    print(f'\nTotal sum of multiplications: {result}') # result should be 90669332
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

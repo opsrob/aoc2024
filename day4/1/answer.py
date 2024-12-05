@@ -17,11 +17,11 @@ def read_grid(filename):
     """open file and print info to validate"""
     with open(filename, 'r', encoding='us-ascii') as file:
         grid = [list(line.strip()) for line in file]
-    print(f"Number of rows: {len(grid)}")
-    print(f"Number of columns: {len(grid[0])}")
+    print(f'Number of rows: {len(grid)}')
+    print(f'Number of columns: {len(grid[0])}')
     return grid
 
-def search2D(grid, row, col, word):
+def search_2d(grid, row, col, word):
     """search the grid"""
     m = len(grid)
     n = len(grid[0])
@@ -31,7 +31,7 @@ def search2D(grid, row, col, word):
     if grid[row][col] != word[0]:
         return False
 
-    lenWord = len(word)
+    len_word = len(word)
 
     # x and y are used to set the direction in which
     # word needs to be searched.
@@ -44,38 +44,38 @@ def search2D(grid, row, col, word):
     for dir in range(8):
 
         # Initialize starting point for current direction
-        currX, currY = row + x[dir], col + y[dir]
+        current_x, current_y = row + x[dir], col + y[dir]
         k = 1
 
-        while k < lenWord:
+        while k < len_word:
 
             # break if out of bounds
-            if currX >= m or currX < 0 or currY >= n or currY < 0:
+            if current_x >= m or current_x < 0 or current_y >= n or current_y < 0:
                 break
 
             # break if characters dont match
-            if grid[currX][currY] != word[k]:
+            if grid[current_x][current_y] != word[k]:
                 break
 
             # Moving in particular direction
-            currX += x[dir]
-            currY += y[dir]
+            current_x += x[dir]
+            current_y += y[dir]
             k += 1
 
         # If all character matched, then value of must
         # be equal to length of word
-        if k == lenWord:
+        if k == len_word:
             COUNT.append((row, col))
 
 def main():
-    grid = read_grid("input.txt")
-    word = "XMAS"
+    grid = read_grid('input.txt')
+    word = 'XMAS'
     m = len(grid)
     n = len(grid[0])
     for i in range(m):
         for j in range(n):
-            search2D(grid, i, j, word)
-    print("Total Occurrences: ", len(COUNT)) # answer should be 2397
+            search_2d(grid, i, j, word)
+    print('Total Occurrences: ', len(COUNT)) # answer should be 2397
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
