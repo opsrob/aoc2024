@@ -32,7 +32,7 @@ def evaluate_expression(nums, operators):
         elif op == '*':
             result *= nums[i + 1]
         else:  # op == '||'
-            result = int(str(result) + str(nums[i + 1]))
+            result = int(str(result) + str(nums[i + 1])) # string because concatenation
     return result
 
 def can_solve_equation(test_value, numbers):
@@ -41,7 +41,8 @@ def can_solve_equation(test_value, numbers):
     
     operators = ['+', '*', '||']
     num_spaces = len(numbers) - 1
-    
+
+    # Generate all possible combinations
     for combo in range(len(operators) ** num_spaces):
         current_ops = []
         temp_combo = combo
