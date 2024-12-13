@@ -127,5 +127,5 @@ def test_example():
 
 test_example()
 
-with open('input.txt') as f:
-    print(f'Final checksum: {solve_disk_defrag(f.read().strip())}')
+with open('input.txt', encoding='us-ascii') as f:
+    print(f'Final checksum: {solve_disk_defrag(f.read().strip())}') # should be 6200294120911
