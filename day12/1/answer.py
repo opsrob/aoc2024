@@ -118,26 +118,26 @@ What is the total price of fencing all regions on your map?
 from collections import defaultdict
 
 def read_input(filename):
-    '''Read and return the garden plot map from the input file'''
+    """Read and return the garden plot map from the input file"""
     with open(filename, encoding='us-ascii') as f:
         return f.read().strip()
 
 def parse_map(input_text):
-    '''Convert input text into a 2D list of characters'''
+    """Convert input text into a 2D list of characters"""
     return [list(line) for line in input_text.split('\n')]
 
 def find_regions(garden_map):
-    '''
+    """
     Find all regions in the garden map using flood fill.
     Returns a dict mapping coordinates to region IDs.
-    '''
+    """
     height = len(garden_map)
     width = len(garden_map[0])
     regions = {}
     region_id = 0
     
     def flood_fill(x, y, plant_type, region_id):
-        '''Helper function to perform flood fill on a region'''
+        """Helper function to perform flood fill on a region"""
         if (x < 0 or x >= width or y < 0 or y >= height or 
             (y, x) in regions or garden_map[y][x] != plant_type):
             return
@@ -159,10 +159,10 @@ def find_regions(garden_map):
     return regions
 
 def calculate_region_stats(garden_map, regions):
-    '''
+    """
     Calculate area and perimeter for each region.
     Returns a dict mapping region IDs to (area, perimeter) tuples.
-    '''
+    """
     height = len(garden_map)
     width = len(garden_map[0])
     stats = defaultdict(lambda: [0, 0])  # [area, perimeter]
@@ -185,11 +185,11 @@ def calculate_region_stats(garden_map, regions):
     return stats
 
 def calculate_total_price(stats):
-    '''Calculate the total price based on area and perimeter of all regions'''
+    """Calculate the total price based on area and perimeter of all regions"""
     return sum(area * perimeter for area, perimeter in stats.values())
 
 def solve_puzzle(filename='input.txt'):
-    '''Main function to solve the garden fence puzzle'''
+    """Main function to solve the garden fence puzzle"""
     # Read and parse input
     input_text = read_input(filename)
     garden_map = parse_map(input_text)
